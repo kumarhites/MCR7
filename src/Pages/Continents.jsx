@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { data } from "../data/Data";
-import Card from "../components/Card";
+import React from "react";
+import ContinentCard from "../components/ContinentCard";
+import { useData } from "../contexts/DataContext";
 
 const Continents = () => {
-  const [continentsData, setContinentsData] = useState(data);
+  const { continentsData } = useData();
+
   return (
     <div className="max-w-[1280px] mx-auto">
       <div className="h-32 flex flex-col items-center justify-center">
@@ -14,8 +15,10 @@ const Continents = () => {
           Top Continents for your next holiday
         </h3>
       </div>
-      <div className="grid grid-cols-3">
-        <Card />
+      <div className="grid grid-cols-3 place-items-center">
+        {continentsData?.continents?.map((continent, id) => (
+          <ContinentCard data={continent} key={id} />
+        ))}
       </div>
     </div>
   );
