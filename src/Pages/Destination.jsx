@@ -6,10 +6,10 @@ import DestinationCard from "../components/DestinationCard";
 const Destination = () => {
   const { continentsData } = useData();
   const { name } = useParams();
-  
+
   const country = continentsData?.continents
     ?.flatMap((continent) => continent.countries)
-    ?.find((country) => country.name === "India");
+    ?.find((country) => country.name === name);
 
   return (
     <div className="max-w-[1280px] mx-auto">
